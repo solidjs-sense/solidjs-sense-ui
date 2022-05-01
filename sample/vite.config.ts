@@ -10,7 +10,9 @@ export default defineConfig({
     modules: {
       localsConvention: 'camelCaseOnly',
       generateScopedName: (name, filename) => {
-        return `SUI_${basename(filename).replace(/\.module\.scss$/, '')}_${name}`;
+        const res = `SUI_${basename(filename).replace(/\.module\.scss(.*)$/, '')}_${name}`;
+        console.log('res', filename);
+        return res;
       },
     },
   },
