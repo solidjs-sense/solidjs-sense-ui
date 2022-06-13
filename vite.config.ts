@@ -1,9 +1,18 @@
 import { defineConfig } from 'vite';
-import path from 'path';
+import path, { basename } from 'path';
 import dts from 'vite-plugin-dts';
 import solidPlugin from 'vite-plugin-solid';
 
 export default defineConfig({
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly',
+      generateScopedName: (name, filename) => {
+        const res = `SUI_${basename(filename).replace(/\.module\.scss(.*)$/, '')}_${name}`;
+        return res;
+      },
+    },
+  },
   plugins: [
     solidPlugin(),
     dts({

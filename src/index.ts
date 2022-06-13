@@ -1,1 +1,1 @@
-export const version = '0.0.1';
+export { Dialog } from './components/dialog/dialog';
