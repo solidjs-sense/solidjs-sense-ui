@@ -22,6 +22,8 @@ $transition: all $duration $cubic-bezier;
 }
 
 .popup {
+  top: 100%;
+  height: unset;
   transition: $transition;
 }
 

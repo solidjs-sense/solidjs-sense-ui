@@ -13,19 +13,18 @@ export type DialogProps = {
 
 export function Dialog(props: DialogProps) {
   const [pending, setPending] = createSignal(false);
-  const [top, setTop] = createSignal(0);
+  const [showAnimate, setShowAnimate] = createSignal(false);
 
-  let contentRef: HTMLDivElement | undefined;
   let timer: NodeJS.Timeout | undefined;
 
   createEffect(() => {
     if (props.visible) {
       setPending(true);
       setTimeout(() => {
-        setTop(contentRef!.clientHeight);
+        setShowAnimate(true);
       }, 16);
     } else {
-      setTop(0);
+      setShowAnimate(false);
       timer = setTimeout(() => {
         setPending(false);
       }, 350);
@@ -41,20 +40,23 @@ export function Dialog(props: DialogProps) {
 
   const style = () => {
     if (props.type !== 'modal') {
+      if (!showAnimate()) {
+        return;
+      }
       return {
-        top: `calc(100% - ${top()}px)`,
+        transform: 'translate3d(0, -100%, 0)',
       };
     }
     return {
-      opacity: top() === 0 ? 0 : 1,
-      transform: `translate(-50%, -50%) scale(${top() === 0 ? 0.5 : 1})`,
+      opacity: !showAnimate() ? 0 : 1,
+      transform: `translate(-50%, -50%) scale(${!showAnimate() ? 0.5 : 1})`,
     };
   };
 
   return (
     <Show when={pending() || props.visible}>
       <Portal>
-        <div class={`${styles.mask} ${top() === 0 && styles.hide}`} onclick={props.onMask}></div>
+        <div class={`${styles.mask} ${!showAnimate() && styles.hide}`} onclick={props.onMask}></div>
         <div
           class={`${styles.ctn}`}
           classList={{
@@ -63,7 +65,7 @@ export function Dialog(props: DialogProps) {
           }}
           style={style()}
         >
-          <div ref={contentRef}>{props.children}</div>
+          {props.children}
         </div>
       </Portal>
     </Show>
