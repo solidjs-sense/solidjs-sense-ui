@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import path, { basename } from 'path';
 import dts from 'vite-plugin-dts';
 import solidPlugin from 'vite-plugin-solid';
+import cssInline from 'vite-plugin-solidjs-sense-css-inline';
 
 export default defineConfig({
   css: {
@@ -14,6 +15,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    cssInline(),
     solidPlugin(),
     dts({
       tsConfigFilePath: 'tsconfig.build.json',
