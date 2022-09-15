@@ -1,7 +1,7 @@
 import { createSignal, Show } from 'solid-js';
 import { JSX } from 'solid-js/jsx-runtime';
 import { t } from '../util';
-import styles from './sample.module.scss';
+import './sample.module.scss';
 
 export enum SampleTypes {
   preview = 'preview',
@@ -12,12 +12,12 @@ export const Sample = (props: { code?: string; children: JSX.Element }) => {
   const [showType, setShowType] = createSignal<SampleTypes>(SampleTypes.preview);
 
   return (
-    <div class={styles.ctn}>
-      <div class={styles.bar}>
+    <div class="ctn">
+      <div class="bar">
         <div onclick={() => setShowType(SampleTypes.preview)}>{t('preview')}</div>
         <div onclick={() => setShowType(SampleTypes.code)}>Code</div>
       </div>
-      <div class={styles.content}>
+      <div>
         <Show
           when={showType() === SampleTypes.preview}
           fallback={

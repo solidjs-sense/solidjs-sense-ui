@@ -1,6 +1,6 @@
 import { Component, lazy } from 'solid-js';
 import { useLoading, useRoutes, Router, RouteDefinition } from 'solidjs-sense-router';
-import './App.scss';
+import './App.module.scss';
 import { Nav } from './components/nav';
 import { bases } from './constant';
 

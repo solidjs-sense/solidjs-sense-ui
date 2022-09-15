@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigator } from 'solidjs-sense-router';
 import { bases } from '../constant';
 import { t } from '../util';
-import './nav.scss';
+import './nav.module.scss';
 
 export const Nav = () => {
   const location = useLocation();

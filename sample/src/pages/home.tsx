@@ -1,5 +1,5 @@
 import { t } from '../util';
-import './home.scss';
+import './home.module.scss';
 
 export default () => {
   return (

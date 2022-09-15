@@ -1,6 +1,7 @@
 import { basename } from 'path';
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
+import senseCssModule from 'vite-plugin-sense-css-module';
 
 // @ts-ignore
 const env = process.env.NODE_ENV;
@@ -15,10 +16,9 @@ export default defineConfig({
       },
     },
   },
-  plugins: [solidPlugin()],
+  plugins: [senseCssModule({ classAttributeRegex: /(class(Name|List)?|activeClass)/ }), solidPlugin()],
   base: env === 'production' ? '/solidjs-sense-ui' : '/',
   build: {
     target: 'esnext',
-    polyfillDynamicImport: false,
   },
 });
