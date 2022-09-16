@@ -2638,10 +2638,10 @@ vite-plugin-dts@^1.0.4:
     fs-extra "^10.0.1"
     ts-morph "^14.0.0"
 
-vite-plugin-sense-css-module@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/vite-plugin-sense-css-module/-/vite-plugin-sense-css-module-0.0.8.tgz#b474edcca75ff4a86e29cdbac03ad24162c8a9d2"
-  integrity sha512-+oe3X/a6t+JRd9RX2UyzQF5lCBDYZSe1ql1vYzGfva2PkgFltFta3vP3zMQ55gWHUR/gfIorkTNULLoP4eWSnw==
+vite-plugin-sense-css-module@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/vite-plugin-sense-css-module/-/vite-plugin-sense-css-module-0.0.9.tgz#7eb8d018f8fe8a336a20285a13f97995f9787869"
+  integrity sha512-/0KZTqJGvqMluIjArmwIfQlnFR9EVC74jf2f00YMHO4fK8avXVFlMlomrYXc2wouBacE4PRmsgit44HjxVnQsg==
   dependencies:
     typescript "^4.8.2"
 
