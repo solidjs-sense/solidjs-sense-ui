@@ -3,6 +3,7 @@ import path, { basename } from 'path';
 import dts from 'vite-plugin-dts';
 import solidPlugin from 'vite-plugin-solid';
 import cssInline from 'vite-plugin-solidjs-sense-css-inline';
+import senseCssModule from 'vite-plugin-sense-css-module';
 
 export default defineConfig({
   css: {
@@ -16,6 +17,9 @@ export default defineConfig({
   },
   plugins: [
     cssInline(),
+    senseCssModule({
+      classAttributeRegex: /class(Name|List)|activeClass/,
+    }),
     solidPlugin(),
     dts({
       tsConfigFilePath: 'tsconfig.build.json',

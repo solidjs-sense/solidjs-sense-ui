@@ -2,7 +2,7 @@ import { createEffect, createSignal, onCleanup, Show } from 'solid-js';
 import { JSX } from 'solid-js/jsx-runtime';
 import { Portal } from 'solid-js/web';
 
-import styles from './dialog.module.scss';
+import './dialog.module.scss';
 
 export type DialogProps = {
   type?: 'popup' | 'modal';
@@ -56,12 +56,18 @@ export function Dialog(props: DialogProps) {
   return (
     <Show when={pending() || props.visible}>
       <Portal>
-        <div class={`${styles.mask} ${!showAnimate() && styles.hide}`} onclick={props.onMask}></div>
         <div
-          class={`${styles.ctn}`}
+          class="mask"
           classList={{
-            [styles.popup]: props.type !== 'modal',
-            [styles.modal]: props.type === 'modal',
+            hide: !showAnimate(),
+          }}
+          onclick={props.onMask}
+        ></div>
+        <div
+          class="ctn"
+          classList={{
+            popup: props.type !== 'modal',
+            modal: props.type === 'modal',
           }}
           style={style()}
         >
