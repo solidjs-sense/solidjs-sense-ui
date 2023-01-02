@@ -9,6 +9,9 @@ export type DialogProps = {
   children: JSX.Element;
   visible?: boolean;
   onMask?: () => void;
+  classCtn?: string;
+  classMask?: string;
+  duration?: string;
 };
 
 export function Dialog(props: DialogProps) {
@@ -56,20 +59,28 @@ export function Dialog(props: DialogProps) {
   return (
     <Show when={pending() || props.visible}>
       <Portal>
+        <Show when={true}>
+          <div
+            class={`mask ${props.classMask || ''}`}
+            classList={{
+              hide: !showAnimate(),
+            }}
+            onclick={props.onMask}
+            style={{
+              'transition-duration': props.duration || '0.35s',
+            }}
+          ></div>
+        </Show>
         <div
-          class="mask"
-          classList={{
-            hide: !showAnimate(),
-          }}
-          onclick={props.onMask}
-        ></div>
-        <div
-          class="ctn"
+          class={`ctn ${props.classCtn || ''}`}
           classList={{
             popup: props.type !== 'modal',
             modal: props.type === 'modal',
           }}
-          style={style()}
+          style={{
+            'transition-duration': props.duration || '0.35s',
+            ...style(),
+          }}
         >
           {props.children}
         </div>
