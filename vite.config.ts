@@ -18,7 +18,7 @@ export default defineConfig({
   plugins: [
     cssInline(),
     senseCssModule({
-      classAttributeRegex: /class(Name|List)|activeClass/,
+      classAttributeRegex: /class(Name|List)?|activeClass/,
     }),
     solidPlugin(),
     dts({
